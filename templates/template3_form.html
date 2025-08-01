@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Template 3 · Fill Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Template 3 · CV / Resume</h1>
+    <a class="btn btn-light" href="{{ url_for('design') }}">Back to Designs</a>
+  </div>
+
+  <!-- IMPORTANT: multipart/form-data for file uploads -->
+  <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div class="row g-4">
+
+      <!-- Profile -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">Profile</div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Role / Headline</label>
+                <input type="text" name="role" class="form-control" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Location</label>
+                <input type="text" name="location" class="form-control">
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Phone</label>
+                <input type="text" name="phone" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">LinkedIn</label>
+                <input type="url" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/you">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">GitHub</label>
+                <input type="url" name="github" class="form-control" placeholder="https://github.com/you">
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Summary (2–4 lines)</label>
+                <textarea name="summary" rows="3" class="form-control"></textarea>
+              </div>
+
+              <!-- NEW: Image URL + Upload -->
+              <div class="col-md-6">
+                <label class="form-label">Profile Image URL (optional)</label>
+                <input type="url" name="profile_img_url" class="form-control"
+                       placeholder="https://example.com/photo.jpg">
+                <div class="form-text">Paste a direct image URL if hosted online.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Upload Profile Image (optional)</label>
+                <input type="file" name="profile_img_file" class="form-control" accept="image/*">
+                <div class="form-text">JPG/PNG/WebP up to ~5MB. If both URL and upload are provided, the upload is used.</div>
+              </div>
+
+              <!-- Small preview -->
+              <div class="col-12">
+                <img id="imgPreview" alt="Preview" class="rounded shadow-sm" style="max-width: 140px; display:none;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">Skills (with levels)</div>
+          <div class="card-body">
+            <label class="form-label">Format: <code>Android:90, Python:85, Flask:80</code></label>
+            <input type="text" name="skills_levels" class="form-control" placeholder="Android:90, Python:85, Flask:80">
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience (3) -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">Experience (up to 3 roles)</div>
+          <div class="card-body">
+            {% for i in range(1,4) %}
+            <div class="border rounded-3 p-3 mb-3">
+              <h6 class="mb-3">Experience {{ i }}</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Title</label>
+                  <input type="text" name="exp{{i}}_title" class="form-control" {% if i==1 %}required{% endif %}>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Organization</label>
+                  <input type="text" name="exp{{i}}_org" class="form-control" {% if i==1 %}required{% endif %}>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Start</label>
+                  <input type="text" name="exp{{i}}_start" class="form-control" placeholder="2024">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">End</label>
+                  <input type="text" name="exp{{i}}_end" class="form-control" placeholder="Present">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Bullets (separate with <code>;</code>)</label>
+                  <textarea name="exp{{i}}_bullets" rows="2" class="form-control" {% if i==1 %}required{% endif %}
+                            placeholder="Built Android app; Implemented Room DB; Added Compose animations"></textarea>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects (4) -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">Projects (up to 4)</div>
+          <div class="card-body">
+            {% for i in range(1,5) %}
+            <div class="border rounded-3 p-3 mb-3">
+              <h6 class="mb-3">Project {{ i }}</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Name</label>
+                  <input type="text" name="proj{{i}}_name" class="form-control" {% if i==1 %}required{% endif %}>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Description</label>
+                  <textarea name="proj{{i}}_desc" rows="2" class="form-control" {% if i==1 %}required{% endif %}></textarea>
+                </div>
+                <div class="col-md-3"><label class="form-label">Live URL</label><input type="url" name="proj{{i}}_live" class="form-control"></div>
+                <div class="col-md-3"><label class="form-label">GitHub URL</label><input type="url" name="proj{{i}}_code" class="form-control"></div>
+                <div class="col-md-3"><label class="form-label">Report URL</label><input type="url" name="proj{{i}}_report" class="form-control"></div>
+                <div class="col-md-3"><label class="form-label">Docs URL</label><input type="url" name="proj{{i}}_docs" class="form-control"></div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Education (3) -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">Education (up to 3)</div>
+          <div class="card-body">
+            {% for i in range(1,4) %}
+            <div class="row g-3 mb-3">
+              <div class="col-md-5"><label class="form-label">Degree</label><input type="text" name="edu{{i}}_degree" class="form-control" {% if i==1 %}required{% endif %}></div>
+              <div class="col-md-5"><label class="form-label">Institute</label><input type="text" name="edu{{i}}_inst" class="form-control" {% if i==1 %}required{% endif %}></div>
+              <div class="col-md-2"><label class="form-label">Year(s)</label><input type="text" name="edu{{i}}_year" class="form-control" placeholder="2023 — Present"></div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">Achievements</div>
+          <div class="card-body">
+            <label class="form-label">Separate each achievement with <code>;</code></label>
+            <input type="text" name="achievements" class="form-control" placeholder="IIT BHU Hackathon finalist; IIIT Nagpur Hackathon participant">
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="col-12 d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary btn-lg">Generate Template</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<script>
+(function () {
+  'use strict'
+  // Bootstrap validation
+  const forms = document.querySelectorAll('.needs-validation');
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) { event.preventDefault(); event.stopPropagation(); }
+      form.classList.add('was-validated');
+    }, false);
+  });
+
+  // Live preview for image URL / file
+  const urlInput = document.querySelector('input[name="profile_img_url"]');
+  const fileInput = document.querySelector('input[name="profile_img_file"]');
+  const preview = document.getElementById('imgPreview');
+
+  function show(src){
+    if (!src) { preview.style.display='none'; return; }
+    preview.src = src; preview.style.display = '';
+  }
+
+  urlInput?.addEventListener('input', () => {
+    const val = urlInput.value.trim();
+    if (val) show(val); else if (!fileInput?.files?.length) show('');
+  });
+  fileInput?.addEventListener('change', () => {
+    if (fileInput.files && fileInput.files[0]) {
+      show(URL.createObjectURL(fileInput.files[0]));
+    } else if (urlInput.value.trim()) {
+      show(urlInput.value.trim());
+    } else {
+      show('');
+    }
+  });
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

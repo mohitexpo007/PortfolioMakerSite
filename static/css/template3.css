@@ -1,0 +1,53 @@
+:root {
+  --primary: #16a34a; /* green */
+  --primary-100: #dcfce7;
+}
+
+/* Theme helpers */
+.text-primary { color: var(--primary) !important; }
+.bg-primary-subtle { background-color: var(--primary-100) !important; }
+.btn-primary { background-color: var(--primary); border-color: var(--primary); }
+.btn-primary:hover { filter: brightness(0.95); }
+.progress-bar { background-color: var(--primary); }
+
+/* Use CSS variable from inline style for progress width */
+.progress-bar { width: var(--w, 0%); }
+
+body { background: #f7f7f7; }
+.resume { max-width: 1000px; margin: 0 auto; }
+.profile-pic { width: 140px; height: 140px; object-fit: cover; }
+
+.section-title {
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+  font-size: .9rem;
+  color: #111;
+  margin-bottom: .75rem;
+}
+
+/* Timeline */
+.timeline { position: relative; margin-left: .75rem; }
+.timeline::before {
+  content: "";
+  position: absolute; left: 7px; top: 0; bottom: 0;
+  width: 2px; background: #e9ecef;
+}
+.timeline-item { position: relative; padding-left: 2rem; margin-bottom: 1.25rem; }
+.timeline-dot {
+  position: absolute; left: 0; top: .4rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+.timeline-content h6 { font-weight: 600; }
+
+/* Print styles */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body { background: #fff; }
+  .resume { box-shadow: none !important; border: none !important; padding: 0 !important; }
+  .d-print-none { display: none !important; }
+  .my-print-0 { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .progress { background-color: #eee !important; }
+}

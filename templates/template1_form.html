@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Template 1 · Fill Details</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">Template 1 · Classic One‑Page</h1>
+        <a class="btn btn-light" href="{{ url_for('design') }}">Back to Designs</a>
+      </div>
+
+      <form method="post" class="needs-validation" novalidate>
+        <div class="row g-4">
+
+          <!-- Basics -->
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">Basic Info</div>
+              <div class="card-body">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                    <div class="invalid-feedback">Please enter your name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Tagline (e.g., ECE · Android · Data)</label>
+                    <input type="text" name="tagline" class="form-control" required>
+                    <div class="invalid-feedback">Please enter a short tagline.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Resume URL (PDF or Google Drive)</label>
+                    <input type="url" name="resume_url" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Hero Image URL</label>
+                    <input type="url" name="hero_img" class="form-control" placeholder="https://.../hero.jpg">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">About (short paragraph)</label>
+                    <textarea name="about_text" rows="4" class="form-control" required></textarea>
+                    <div class="invalid-feedback">Please write something about yourself.</div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Skills (comma‑separated)</label>
+                    <input type="text" name="skills_csv" class="form-control" placeholder="Android, Flask, Python, MATLAB">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projects -->
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">Projects (up to 3)</div>
+              <div class="card-body">
+                <!-- Project 1 -->
+                <div class="border rounded-3 p-3 mb-3">
+                  <h6 class="mb-3">Project 1</h6>
+                  <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label">Title</label><input type="text" name="project1_title" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">Image URL</label><input type="url" name="project1_img" class="form-control" placeholder="https://.../image.jpg"></div>
+                    <div class="col-12"><label class="form-label">Description</label><textarea name="project1_desc" class="form-control" rows="2" required></textarea></div>
+                    <div class="col-md-6"><label class="form-label">Live URL</label><input type="url" name="project1_live" class="form-control" placeholder="#"></div>
+                    <div class="col-md-6"><label class="form-label">GitHub URL</label><input type="url" name="project1_code" class="form-control" placeholder="#"></div>
+                  </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="border rounded-3 p-3 mb-3">
+                  <h6 class="mb-3">Project 2</h6>
+                  <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label">Title</label><input type="text" name="project2_title" class="form-control"></div>
+                    <div class="col-md-6"><label class="form-label">Image URL</label><input type="url" name="project2_img" class="form-control"></div>
+                    <div class="col-12"><label class="form-label">Description</label><textarea name="project2_desc" class="form-control" rows="2"></textarea></div>
+                    <div class="col-md-6"><label class="form-label">Live URL</label><input type="url" name="project2_live" class="form-control"></div>
+                    <div class="col-md-6"><label class="form-label">GitHub URL</label><input type="url" name="project2_code" class="form-control"></div>
+                  </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="border rounded-3 p-3">
+                  <h6 class="mb-3">Project 3</h6>
+                  <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label">Title</label><input type="text" name="project3_title" class="form-control"></div>
+                    <div class="col-md-6"><label class="form-label">Image URL</label><input type="url" name="project3_img" class="form-control"></div>
+                    <div class="col-12"><label class="form-label">Description</label><textarea name="project3_desc" class="form-control" rows="2"></textarea></div>
+                    <div class="col-md-6"><label class="form-label">Live URL</label><input type="url" name="project3_live" class="form-control"></div>
+                    <div class="col-md-6"><label class="form-label">GitHub URL</label><input type="url" name="project3_code" class="form-control"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">Contact</div>
+              <div class="card-body">
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Location</label>
+                    <input type="text" name="location" class="form-control" placeholder="City, Country">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">LinkedIn</label>
+                    <input type="url" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/...">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="col-12 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary btn-lg">Generate Template</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Basic client-side validation for required fields
+      (function () {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

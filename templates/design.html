@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Choose a Design</title>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+  </head>
+  
+  <body class="space-theme">
+    <!-- ★ Starfield background canvas -->
+    <canvas class="bg-stars" data-starfield></canvas>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">
+          <span class="brand-dot">●</span> Portfolio Builder
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#how">How it works</a></li>
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-primary" href="{{ url_for('home') }}"><i class="bi bi-house me-1"></i> Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    
+    <header class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-12 col-lg-8">
+            <h1 class="fw-bold mb-2" style="color: blue;">Choose your template</h1>
+            <p class="text-muted mb-0">Each card shows what the template includes. Use the search to filter by feature (e.g., “resume”, “sidebar”, “tags”).</p>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input id="templateSearch" type="text" class="form-control" placeholder="Search templates…">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <section class="py-5">
+      <div class="container">
+        <div id="templateGrid" class="row g-4">
+
+          <!-- Template 1 -->
+          <div class="col-12 col-md-6 col-lg-4 template-item" data-tags="one-page, about, skills, projects, contact, simple">
+            <div class="template-card h-100">
+              <img class="template-cover"
+         src="{{ url_for('static', filename='img/template1_example.png') }}"
+         alt="Template 1"
+         onerror="this.src='https://picsum.photos/600/360?template2'">
+              <div class="p-4">
+                <h5 class="mb-1">Template 1 · One‑Page</h5>
+                <p class="text-muted small mb-3">Hero, About, Skills, Projects, Contact.</p>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge feature-badge">One‑page</span>
+                  <span class="badge feature-badge">Project grid</span>
+                  <span class="badge feature-badge">Contact (mailto)</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="{{ url_for('template1_form') }}">Fill Form</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Template 2 -->
+          <div class="col-12 col-md-6 col-lg-4 template-item" data-tags="sidebar, tags, filter, projects, bootstrap">
+            <div class="template-card h-100">
+              <img class="template-cover"
+         src="{{ url_for('static', filename='img/template2_example.png') }}"
+         alt="Template 2"
+         onerror="this.src='https://picsum.photos/600/360?template2'">
+              <div class="p-4">
+                <h5 class="mb-1">Template 2 · Sidebar + Grid</h5>
+                <p class="text-muted small mb-3">Sticky profile sidebar, tag‑filtered projects.</p>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge feature-badge">Sticky sidebar</span>
+                  <span class="badge feature-badge">Tag filter</span>
+                  <span class="badge feature-badge">Responsive grid</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="{{ url_for('template2_form') }}">Fill Form</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Template 3 -->
+          <div class="col-12 col-md-6 col-lg-4 template-item" data-tags="cv, resume, pdf, timeline, skills, bars">
+            <div class="template-card h-100">
+              <img class="template-cover"
+         src="{{ url_for('static', filename='img/template3_example.png') }}"
+         alt="Template 3"
+         onerror="this.src='https://picsum.photos/600/360?template3'">
+              <div class="p-4">
+                <h5 class="mb-1">Template 3 · CV / Resume</h5>
+                <p class="text-muted small mb-3">Printable resume with timeline & skill bars.</p>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge feature-badge">PDF ready</span>
+                  <span class="badge feature-badge">Timeline</span>
+                  <span class="badge feature-badge">Skill levels</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="{{ url_for('template3_form') }}">Fill Form</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coming soon (4–6) -->
+          <div class="col-12 col-md-6 col-lg-4 template-item" data-tags="coming, soon, gallery"></div>
+          <div class="col-12 col-md-6 col-lg-4 template-item" data-tags="coming, soon, blog"></div>
+          <div class="col-12 col-md-6 col-lg-4 template-item" data-tags="coming, soon, minimal"></div>
+
+        </div>
+      </div>
+    </section>
+
+    
+    <footer class="py-4 border-top">
+      <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <small class="text-muted">© 2025 Portfolio Builder</small>
+        <div class="d-flex gap-3 small text-muted">
+          <span><i class="bi bi-check2-circle me-1"></i> Clean HTML</span>
+          <span><i class="bi bi-bootstrap me-1"></i> Bootstrap 5</span>
+          <span><i class="bi bi-lightning-charge me-1"></i> Fast & responsive</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      
+      const input = document.getElementById('templateSearch');
+      if (input) {
+        input.addEventListener('input', () => {
+          const q = input.value.toLowerCase().trim();
+          document.querySelectorAll('#templateGrid .template-item').forEach(card => {
+            const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+            const text = card.innerText.toLowerCase();
+            const match = !q || tags.includes(q) || text.includes(q);
+            card.style.display = match ? '' : 'none';
+          });
+        });
+      }
+    </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/starfield.js') }}"></script>
+  </body>
+</html>

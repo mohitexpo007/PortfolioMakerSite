@@ -1,0 +1,41 @@
+:root {
+  --primary: #4f46e5; /* indigo-ish */
+  --primary-100: #eef2ff;
+}
+
+.text-primary { color: var(--primary) !important; }
+.bg-primary-subtle { background-color: var(--primary-100) !important; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar .nav-link.active {
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+.hero-img {
+  max-height: 420px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.badge {
+  font-size: 0.95rem;
+  border: 1px solid rgba(79,70,229,.15);
+  border-radius: .75rem;
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}

@@ -1,0 +1,38 @@
+:root {
+  --primary: #0ea5e9; /* cyan/sky */
+  --primary-100: #e0f2fe;
+}
+
+.text-primary { color: var(--primary) !important; }
+.bg-primary-subtle { background-color: var(--primary-100) !important; }
+
+.sidebar-wrapper { max-width: 360px; margin: 0 auto; }
+.profile-pic { width: 120px; height: 120px; object-fit: cover; }
+
+.nav-link { color: #555; }
+.nav-link:hover { color: var(--primary); }
+
+.project-card { transition: transform .15s ease, box-shadow .15s ease; }
+.project-card:hover { transform: translateY(-3px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.08) !important; }
+
+.badge { border: 1px solid rgba(14,165,233,.25); border-radius: .75rem; }
+
+.timeline { position: relative; margin-left: .75rem; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px; top: 0; bottom: 0;
+  width: 2px; background: #e9ecef;
+}
+.timeline-item { position: relative; padding-left: 2rem; margin-bottom: 1.5rem; }
+.timeline-dot {
+  position: absolute; left: 0; top: .35rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+/* Better spacing on wide screens */
+@media (min-width: 992px) {
+  main { padding-left: 3rem !important; padding-right: 3rem !important; }
+}
